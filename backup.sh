@@ -1,11 +1,8 @@
 #!/bin/sh
 cd /
 
-# Store current date in a variable.
-TIMESTAMP=$(date "+%F_%H-%M-%S")
-
 # Store new backup archive location in a variable.
-BACKUP_LOCATION=/backups/$TIMESTAMP.tar.xz
+BACKUP_LOCATION=/backups/$(date +"%F_%H-%M-%S").tar.xz
 
 # Create variables for the files and directories to be archived.
 BACKUP_DB=db.sqlite3 # file
@@ -15,6 +12,6 @@ BACKUP_ATTACHMENTS=attachments # directory
 BACKUP_SENDS=sends # directory
 
 # Create an archive of the files and directories.
-echo "Starting backup at ${TIMESTAMP}..."
+echo "Starting backup at $(date +"%F %r")..."
 cd /data && tar -Jcf $BACKUP_LOCATION $BACKUP_DB $BACKUP_RSA $BACKUP_CONFIG $BACKUP_ATTACHMENTS $BACKUP_SENDS 2>/dev/null && cd /
-echo "Backup completed at ${TIMESTAMP}."
+echo "Backup completed at $(date +"%F %r")."
