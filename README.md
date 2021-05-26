@@ -1,5 +1,5 @@
 Backs up vaultwarden files using cron daemon.
-Can be set to be run automatically.
+Can be set to run automatically.
 
 ## Usage
 
