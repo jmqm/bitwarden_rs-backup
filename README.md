@@ -1,4 +1,4 @@
-Backs up vaultwarden files using cron daemon.
+Backs up vaultwarden files and folders to `tar.xz` archives.
 Can be set to run automatically.
 
 ## Usage
