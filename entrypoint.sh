@@ -26,4 +26,5 @@ if [ "$(id -u)" -eq 0 ]; then
 fi
 
 echo "[INFO] Running automatically (${CRON_TIME}), started at $(date +"%F %r")."
+exec $SHELL # Keep OS running.
 #tail -F "$LOGFILE" /app/log/cron.log
