@@ -12,7 +12,7 @@ fi
 
 # Create cron jobs.
 if [ "$(id -u)" -eq 0 ] && [ "$(grep -c "$BACKUP_CMD" "$CRONFILE")" -eq 0 ]; then
-  echo "$CRON_TIME $BACKUP_CMDD >> $LOGS_FILE 2>&1" | crontab -
+  echo "$CRON_TIME $BACKUP_CMD >> $LOGS_FILE 2>&1" | crontab -
   # Delete after x days job here.
 fi
 
@@ -27,5 +27,5 @@ if [ "$(id -u)" -eq 0 ]; then
   exec su-exec app:app "$0" "$@"
 fi
 
-echo "[INFO] Running automatically (${CRON_TIME}), started at $(date +"%F %r")."# > "$LOGS_FILE"
-tail -F "$LOGS_FILE" /app/log/cron.log # Keeps terminal open and writes logs.
+echo "[INFO] Running automatically (${CRON_TIME}), started at $(date +"%F %r")." > "$LOGS_FILE"
+tail -F "$LOGS_FILE" # Keeps terminal open and writes logs.
