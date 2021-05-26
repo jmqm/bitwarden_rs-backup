@@ -36,16 +36,16 @@ services:
 
 ## Environment Variables
 #### ⭐Required, 👍 Recommended
-| Environment Variable       | Description                                                                                                                           |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| UID                      ⭐| User ID to run the cron job as.                                                                                                       |
-| GID                      ⭐| Group ID to run the cron job as.                                                                                                      |
-| CRON_TIME                👍| When to run (default is every 12 hours). Info [here](https://www.ibm.com/docs/en/db2oc?topic=task-unix-cron-format) and editor [here](https://crontab.guru/). |
-| DELETE_AFTER 👍| Delete backups _X_ days old. _(unsupported at the moment)_                                                                            |
+| Environment Variable | Description                                                                                                                           |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| UID                ⭐| User ID to run the cron job as.                                                                                                       |
+| GID                ⭐| Group ID to run the cron job as.                                                                                                      |
+| CRON_TIME          👍| When to run (default is every 12 hours). Info [here](https://www.ibm.com/docs/en/db2oc?topic=task-unix-cron-format) and editor [here](https://crontab.guru/). |
+| DELETE_AFTER       👍| Delete backups _X_ days old. _(unsupported at the moment)_                                                                            |
 
 #### Optional
-| Environment Variable       | Description                                                                                  |
-| -------------------------- | -------------------------------------------------------------------------------------------- |
+| Environment Variable | Description                                                                                  |
+| -------------------- | -------------------------------------------------------------------------------------------- |
 | TZ ¹           	     | Timezone inside the container. Can mount `/etc/localtime` instead as well _(recommended)_.   |
 | LOGFILE        	     | Log file path relative to inside the container.                                              |
 | CRONFILE       	     | Cron file path relative to inside the container.                                             |
