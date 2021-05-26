@@ -36,19 +36,19 @@ services:
 
 ## Environment Variables
 #### ⭐Required, 👍 Recommended
-| Variable       | Description                                                                                                                           |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| UID          ⭐| User ID to run the cron job as.                                                                                                       |
-| GID          ⭐| Group ID to run the cron job as.                                                                                                      |
-| CRON_TIME    👍| When to run (default is every 12 hours). Info [here](https://www.ibm.com/docs/en/db2oc?topic=task-unix-cron-format) and editor [here](https://crontab.guru/). |
+| Environment Variable       | Description                                                                                                                           |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| UID                      ⭐| User ID to run the cron job as.                                                                                                       |
+| GID                      ⭐| Group ID to run the cron job as.                                                                                                      |
+| CRON_TIME                👍| When to run (default is every 12 hours). Info [here](https://www.ibm.com/docs/en/db2oc?topic=task-unix-cron-format) and editor [here](https://crontab.guru/). |
 | DELETE_AFTER 👍| Delete backups _X_ days old. _(unsupported at the moment)_                                                                            |
 
 #### Optional
-| Variable       | Description                                                                                  |
-| -------------- | -------------------------------------------------------------------------------------------- |
-| TZ ¹           | Timezone inside the container. Can mount `/etc/localtime` instead as well _(recommended)_.   |
-| LOGFILE        | Log file path relative to inside the container.                                              |
-| CRONFILE       | Cron file path relative to inside the container.                                             |
+| Environment Variable       | Description                                                                                  |
+| -------------------------- | -------------------------------------------------------------------------------------------- |
+| TZ ¹           	     | Timezone inside the container. Can mount `/etc/localtime` instead as well _(recommended)_.   |
+| LOGFILE        	     | Log file path relative to inside the container.                                              |
+| CRONFILE       	     | Cron file path relative to inside the container.                                             |
 
 ¹ See <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones> for more information
 
@@ -60,6 +60,4 @@ So source *AND* destination have to be +rw for the user. You can set the user an
 via the `UID` and `GID` environment variables like described above.
 
 #### Date Time issues / Wrong timestamp
-If you need timestamps in your local timezone you should mount `/etc/timezone:/etc/timezone:ro` and `/etc/localtime:/etc/localtime:ro`
-like it's done in the [docker-compose.yml](docker-compose.yml). An other possible solution is to set the environment variable accordingly (like  `TZ=Europe/Berlin`) 
-(see <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones> for more information).
+Mount `etc/localtime` (recommend mounting as read-only) or set `TZ` environment variable.
