@@ -9,7 +9,7 @@ RUN apk add --no-cache \
     xz \
     tzdata
 
-ENV CRON_TIME "* */12 * * *"
+ENV CRON_TIME "0 */12 * * *"
 ENV UID 100
 ENV GID 100
 ENV CRONFILE /etc/crontabs/root
