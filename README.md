@@ -35,7 +35,7 @@ services:
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | UID          ⭐| User ID to run the cron job as.                                                                                                       |
 | GID          ⭐| Group ID to run the cron job as.                                                                                                      |
-| CRON_TIME    👍| When to run. Info [here](https://www.ibm.com/docs/en/db2oc?topic=task-unix-cron-format) and editor [here](https://crontab.guru/).     |
+| CRON_TIME    👍| When to run (default is every 12 hours). Info [here](https://www.ibm.com/docs/en/db2oc?topic=task-unix-cron-format) and editor [here](https://crontab.guru/). |
 | DELETE_AFTER 👍| Delete backups _X_ days old. _(unsupported at the moment)_                                                                            |
 
 #### Optional
