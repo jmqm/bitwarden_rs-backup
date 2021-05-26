@@ -29,5 +29,5 @@ if [ "$(id -u)" -eq 0 ]; then
   exec su-exec app:app "$0" "$@"
 fi
 
-echo "$(date "+%F %T") - Container started" > "$LOGFILE"
+echo "[INFO] Container started at $(date +"%F %r")" > "$LOGFILE"
 tail -F "$LOGFILE" /app/log/cron.log
