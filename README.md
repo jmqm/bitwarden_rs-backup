@@ -55,8 +55,6 @@ services:
 | Environment Variable | Info                                                                                         |
 | -------------------- | -------------------------------------------------------------------------------------------- |
 | TZ ¹                 | Timezone inside the container. Can mount `/etc/localtime` instead as well _(recommended)_.   |
-| LOGFILE              | Log file path relative to inside the container.                                              |
-| CRONFILE             | Cron file path relative to inside the container.                                             |
 
 ¹ See <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones> for more information
 
