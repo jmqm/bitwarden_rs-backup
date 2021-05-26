@@ -36,7 +36,7 @@ services:
 
 ## Environment Variables
 #### ⭐Required, 👍 Recommended
-| Environment Variable | Description                                                                                                                           |
+| Environment Variable | Info                                                                                                                                  |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | UID                ⭐| User ID to run the cron job as.                                                                                                       |
 | GID                ⭐| Group ID to run the cron job as.                                                                                                      |
@@ -44,11 +44,11 @@ services:
 | DELETE_AFTER       👍| Delete backups _X_ days old. _(unsupported at the moment)_                                                                            |
 
 #### Optional
-| Environment Variable | Description                                                                                  |
+| Environment Variable | Info                                                                                         |
 | -------------------- | -------------------------------------------------------------------------------------------- |
-| TZ ¹           	     | Timezone inside the container. Can mount `/etc/localtime` instead as well _(recommended)_.   |
-| LOGFILE        	     | Log file path relative to inside the container.                                              |
-| CRONFILE       	     | Cron file path relative to inside the container.                                             |
+| TZ ¹                 | Timezone inside the container. Can mount `/etc/localtime` instead as well _(recommended)_.   |
+| LOGFILE              | Log file path relative to inside the container.                                              |
+| CRONFILE             | Cron file path relative to inside the container.                                             |
 
 ¹ See <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones> for more information
 
