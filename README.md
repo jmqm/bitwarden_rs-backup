@@ -1,5 +1,13 @@
-Backs up vaultwarden files and folders to `tar.xz` archives.
+Backs up vaultwarden files and directories to `tar.xz` archives.
 Can be set to run automatically.
+
+Files and directories that are backed up:
+- db.sqlite3
+- rsa_key.der
+- rsa_key.pem
+- rsa_key.pub.der
+- /attachments
+- /sends
 
 ## Usage
 
@@ -30,7 +38,7 @@ services:
 ```
 
 ## Volumes
-`/data` - Vaultwarden's `/data` folder. Recommend setting mount as read-only.
+`/data` - Vaultwarden's `/data` directory. Recommend setting mount as read-only.
 
 `/backups` - Where to store backups to.
 
