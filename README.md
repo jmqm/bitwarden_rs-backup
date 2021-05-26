@@ -53,11 +53,5 @@ services:
 ¹ See <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones> for more information
 
 ## Errors
-#### Wrong permissions
-`Error: unable to open database file` is most likely caused by permission errors.
-Note that sqlite3 creates a lock file in the source directory while running the backup.
-So source *AND* destination have to be +rw for the user. You can set the user and group ID
-via the `UID` and `GID` environment variables like described above.
-
-#### Date Time issues / Wrong timestamp
-Mount `etc/localtime` (recommend mounting as read-only) or set `TZ` environment variable.
+#### Unexpected timestamp
+Mount `etc/localtime` _(recommend mounting as read-only)_ or set `TZ` environment variable.
