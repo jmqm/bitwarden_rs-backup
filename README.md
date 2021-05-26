@@ -18,7 +18,7 @@ services:
     image: jmqm/vaultwarden_backup
     container_name: vaultwarden_backup
     volumes:
-      - "/vaultwarden_data_directory:/data:ro"
+      - "/vaultwarden_data_directory:/data:ro" # Read-only
       - "/backup_directory:/backups"
 
       - "/etc/localtime:/etc/localtime:ro" # Container uses date from host.
@@ -28,6 +28,11 @@ services:
       - UID=1024
       - GID=100
 ```
+
+## Volumes
+`/data` - Vaultwarden's `/data` folder. Recommend setting mount as read-only.
+
+`/backups` - Where to store backups to.
 
 ## Environment Variables
 #### ⭐Required, 👍 Recommended
