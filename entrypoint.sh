@@ -13,13 +13,15 @@ fi
 
 # Create cron jobs.
 if [ "$(id -u)" -eq 0 ] && [ "$(grep -c "$BACKUP_CMD" "$CRONFILE")" -eq 0 ]; then
-    # Add backup script to cron job list.
+    # Add backup script to cron jobs.
     echo "$CRON_TIME $BACKUP_CMD >> $LOGS_FILE 2>&1" | crontab -
+    echo "[INFO] Added delete script to cron jobs."
 
     # Check if $DELETE_AFTER is not null and is greater than 0.
-    # If so, add it to the cron job list.
+    # If so, add it to cron jobs.
     if [ -n "$DELETE_AFTER" ] && [[ "$DELETE_AFTER" -gt 0 ]]; then
         echo "$CRON_TIME $DELETE_CMD >> $LOGS_FILE 2>&1" | crontab -
+        echo "[INFO] Added delete script to cron jobs."
     fi
 fi
 
