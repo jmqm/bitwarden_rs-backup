@@ -7,4 +7,4 @@ cd /backups
 find . -iname "*.tar.xz" -type f -mtime +$DELETE_AFTER -exec rm -f {} \;
 
 # Echo that script ran.
-echo "Deleted files older than $DELETE_AFTER days."
+echo "[INFO] Deleted files older than $DELETE_AFTER days."
