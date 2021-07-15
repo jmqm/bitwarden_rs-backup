@@ -15,6 +15,8 @@ fi
 echo "" | crontab -
 echo "[INFO] Cron jobs cleared."
 
+echo "$(id -u)"
+
 # Create cron jobs.
 if [ "$(id -u)" -eq 0 ]; then
     # Add backup script to cron jobs.
@@ -36,6 +38,7 @@ fi
 
 # Restart script as user "app:app".
 if [ "$(id -u)" -eq 0 ]; then
+    echo "restarting script"
     exec su-exec app:app "$0" "$@"
 fi
 
