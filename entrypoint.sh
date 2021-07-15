@@ -11,8 +11,8 @@ if [ "$1" = "manual" ]; then
     exit 0
 fi
 
-# Create cron jobs.
-if [ "$(id -u)" -eq 0 ] && [ "$(grep -c "$BACKUP_CMD" "$CRONFILE")" -eq 0 ]; then
+# Create cron jobs (if they aren't created).
+if [ "$(id -u)" -eq 0 ] && [ "$(grep -c "$BACKUP_CMD" "$DELETE_CMD" "$CRONFILE")" -eq 0 ]; then
     # Add backup script to cron jobs.
     (crontab -l 2>/dev/null; echo "$CRON_TIME $BACKUP_CMD >> $LOGS_FILE 2>&1") | crontab -
     echo "[INFO] Added backup script to cron jobs."
