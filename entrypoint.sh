@@ -22,8 +22,10 @@ if [ "$(id -u)" -eq 0 ]; then
     echo "[INFO] Added backup script to cron jobs."
 
     # Add delete script to cron jobs if DELETE_AFTER is not null and is greater than 0.
-    (crontab -l 2>/dev/null; echo "$CRON_TIME $DELETE_CMD >> $LOGS_FILE 2>&1") | crontab -
-    echo "[INFO] Added delete script to cron jobs."
+    if [ -n "$DELETE_AFTER" ] && [[ "$DELETE_AFTER" -gt 0 ]]; then
+        (crontab -l 2>/dev/null; echo "$CRON_TIME $DELETE_CMD >> $LOGS_FILE 2>&1") | crontab -
+        echo "[INFO] Added delete script to cron jobs."
+    fi
 fi
 
 # Start crond if it's not running.
