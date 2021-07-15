@@ -11,14 +11,12 @@ if [ "$1" = "manual" ]; then
     exit 0
 fi
 
-# Clear cron jobs.
-echo "" | crontab -
-echo "[INFO] Cron jobs cleared."
-
-echo "$(id -u)"
-
-# Create cron jobs.
+# Create cron jobs if root.
 if [ "$(id -u)" -eq 0 ]; then
+    # Clear cron jobs.
+    echo "" | crontab -
+    echo "[INFO] Cron jobs cleared."
+
     # Add backup script to cron jobs.
     (crontab -l 2>/dev/null; echo "$CRON_TIME $BACKUP_CMD >> $LOGS_FILE 2>&1") | crontab -
     echo "[INFO] Added backup script to cron jobs."
@@ -38,7 +36,6 @@ fi
 
 # Restart script as user "app:app".
 if [ "$(id -u)" -eq 0 ]; then
-    echo "restarting script"
     exec su-exec app:app "$0" "$@"
 fi
 
