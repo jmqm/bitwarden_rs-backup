@@ -13,4 +13,4 @@ BACKUP_SENDS=sends # directory
 
 # Create an archive of the files and directories.
 cd /data && tar -Jcf $BACKUP_LOCATION $BACKUP_DB $BACKUP_RSA $BACKUP_CONFIG $BACKUP_ATTACHMENTS $BACKUP_SENDS 2>/dev/null && cd /
-echo "[INFO] Created a new backup on $(date +"%F %r")."
+echo "[$(date +"%F %r")] Created a new backup."
