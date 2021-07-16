@@ -26,10 +26,10 @@ services:
     image: jmqm/vaultwarden_backup:latest
     container_name: vaultwarden_backup
     volumes:
-      - "/vaultwarden_data_directory:/data:ro" # Read-only
-      - "/backup_directory:/backups"
+      - /vaultwarden_data_directory:/data:ro # Read-only
+      - /backup_directory:/backups
 
-      - "/etc/localtime:/etc/localtime:ro" # Container uses date from host.
+      - /etc/localtime:/etc/localtime:ro # Container uses date from host.
     environment:
       - DELETE_AFTER=30
       - CRON_TIME=* */24 * * * # Runs at 12:00 AM.
