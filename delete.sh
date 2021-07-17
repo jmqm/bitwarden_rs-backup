@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Sleep for one minute to ensure a backup is made first.
+sleep 1m
+
 # Go to the backups directory.
 cd /backups
 
