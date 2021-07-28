@@ -53,7 +53,6 @@ services:
 
 ❗ User must have read permission for `/data` directory and read, write and delete permissions for `/backups`.
 
-
 #### Optional
 | Environment Variable | Info                                                                                         |
 | -------------------- | -------------------------------------------------------------------------------------------- |
