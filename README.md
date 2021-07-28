@@ -51,6 +51,9 @@ services:
 | CRON_TIME          👍| When to run (default is every 12 hours). Info [here](https://www.ibm.com/docs/en/db2oc?topic=task-unix-cron-format) and editor [here](https://crontab.guru/). |
 | DELETE_AFTER       👍| Delete backups _X_ days old. _(exclusive to automatic mode)_                                                                            |
 
+❗ User must have read permission for `/data` directory and read, write and delete permissions for `/backups`.
+
+
 #### Optional
 | Environment Variable | Info                                                                                         |
 | -------------------- | -------------------------------------------------------------------------------------------- |
