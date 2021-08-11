@@ -12,7 +12,6 @@ RUN apk add --no-cache \
 ENV CRON_TIME "0 */12 * * *"
 ENV UID 100
 ENV GID 100
-ENV CRONFILE /etc/crontabs/root
 ENV DELETE_AFTER 0
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
