@@ -8,7 +8,7 @@ on:
 # Instructions on what to do.
 # In this case, 'build' is the job and Ubuntu is the OS to run the job on.
 jobs:
-  build:
+  main:
     runs-on: ubuntu-latest
     env:
       USERNAME: jmqm
