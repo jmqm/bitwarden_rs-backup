@@ -62,4 +62,4 @@ services:
 
 ## Errors
 #### Unexpected timestamp
-Mount `etc/localtime` _(recommend mounting as read-only)_ or set `TZ` environment variable.
+Mount `/etc/localtime` _(recommend mounting as read-only)_ or set `TZ` environment variable.
