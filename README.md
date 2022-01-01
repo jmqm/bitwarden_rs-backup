@@ -37,10 +37,10 @@ services:
       - GID=100
 ```
 
-## Volumes
-`/data` - Vaultwarden's `/data` directory. Recommend setting mount as read-only.
+## Volumes _(permissions required)_
+`/data` _(read)_- Vaultwarden's `/data` directory. Recommend setting mount as read-only.
 
-`/backups` - Where to store backups to.
+`/backups` _(write)_ - Where to store backups to.
 
 ## Environment Variables
 #### ⭐Required, 👍 Recommended
@@ -48,10 +48,8 @@ services:
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | UID                ⭐| User ID to run the cron job as.                                                                                                       |
 | GID                ⭐| Group ID to run the cron job as.                                                                                                      |
-| CRON_TIME          👍| When to run (default is every 12 hours). Info [here](https://www.ibm.com/docs/en/db2oc?topic=task-unix-cron-format) and editor [here](https://crontab.guru/). |
-| DELETE_AFTER       👍| Delete backups _X_ days old. _(exclusive to automatic mode)_                                                                            |
-
-❗ User must have read permission for `/data` directory and read, write and delete permissions for `/backups`.
+| CRON_TIME          👍| When to run _(default is every 12 hours)_. Info [here][cron-format-wiki] and editor [here][cron-editor]. |
+| DELETE_AFTER       👍| _(exclusive to automatic mode)_ Delete backups _X_ days old. Requires `read` and `write` permissions.                                 |
 
 #### Optional
 | Environment Variable | Info                                                                                         |
@@ -62,4 +60,7 @@ services:
 
 ## Errors
 #### Unexpected timestamp
-Mount `etc/localtime` _(recommend mounting as read-only)_ or set `TZ` environment variable.
+Mount `/etc/localtime` _(recommend mounting as read-only)_ or set `TZ` environment variable.
+
+[cron-format-wiki]: https://www.ibm.com/docs/en/db2oc?topic=task-unix-cron-format
+[cron-editor]: https://crontab.guru/
