@@ -1,13 +1,12 @@
 #!/bin/sh
 
-BACKUP_CMD="/sbin/su-exec ${UID}:${GID} /app/backup.sh"
-DELETE_CMD="/sbin/su-exec ${UID}:${GID} /app/delete.sh"
-LOGS_FILE="/app/log/backup.log"
+SCRIPT_CMD="/sbin/su-exec ${UID}:${GID} /app/script.sh"
+LOGS_FILE="/app/log/log.log"
 
-# If passed "manual", run backup script once ($1 = First argument passed).
+# If passed "manual", run script once ($1 = First argument passed).
 if [ "$1" = "manual" ]; then
     echo "[$(date +"%F %r")] Running one-time."
-    $BACKUP_CMD
+    $SCRIPT_CMD
     exit 0
 fi
 
@@ -17,15 +16,9 @@ if [ "$(id -u)" -eq 0 ]; then
     echo "" | crontab -
     echo "[$(date +"%F %r")] Cron jobs cleared."
 
-    # Add backup script to cron jobs.
-    (crontab -l 2>/dev/null; echo "$CRON_TIME $BACKUP_CMD >> $LOGS_FILE 2>&1") | crontab -
-    echo "[$(date +"%F %r")] Added backup script to cron jobs."
-
-    # Add delete script to cron jobs if DELETE_AFTER is not null and is greater than 0.
-    if [ -n "$DELETE_AFTER" ] && [ "$DELETE_AFTER" -gt 0 ]; then
-        (crontab -l 2>/dev/null; echo "$CRON_TIME $DELETE_CMD >> $LOGS_FILE 2>&1") | crontab -
-        echo "[$(date +"%F %r")] Added delete script to cron jobs."
-    fi
+    # Add script to cron jobs.
+    (crontab -l 2>/dev/null; echo "$CRON_TIME $SCRIPT_CMD >> $LOGS_FILE 2>&1") | crontab -
+    echo "[$(date +"%F %r")] Added script to cron jobs."
 fi
 
 # Start crond if it's not running.

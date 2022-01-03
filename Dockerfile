@@ -15,8 +15,7 @@ ENV GID 100
 ENV DELETE_AFTER 0
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY backup.sh /app/
-COPY delete.sh /app/
+COPY script.sh /app/
 
 RUN mkdir /app/log/ \
     && chown -R app:app /app/ \
