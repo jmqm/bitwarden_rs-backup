@@ -7,8 +7,7 @@ EXTENSION="tar.xz"
 
 # ------------------ [ BACKUP ] ------------------
 
-cd /data
-
+cd /data || exit 1  # Exit with error if opening vw data file fails 
 BACKUP_LOCATION="/backups/$(date +"%F_%H-%M-%S").${EXTENSION}"
 
 BACKUP_DB="db.sqlite3" # file
@@ -17,10 +16,36 @@ BACKUP_CONFIG="config.json" # file
 BACKUP_ATTACHMENTS="attachments" # directory
 BACKUP_SENDS="sends" # directory
 
-# Back up files and folders.
-tar -Jcf $BACKUP_LOCATION $BACKUP_DB $BACKUP_RSA $BACKUP_CONFIG $BACKUP_ATTACHMENTS $BACKUP_SENDS 2>/dev/null
+# Create list of backup items to archive
+BACKUP_ITEMS="$BACKUP_DB $BACKUP_RSA $BACKUP_CONFIG $BACKUP_ATTACHMENTS $BACKUP_SENDS"
 
-OUTPUT="${OUTPUT}New backup created"
+# Verify which items are available to be backed up
+FILES_TO_BACKUP=""
+WARNING=""
+
+for ITEM in $BACKUP_ITEMS; do
+    if [ -e "$ITEM" ] || [ -d "$ITEM" ]; then
+        FILES_TO_BACKUP="$FILES_TO_BACKUP $ITEM"
+    else # if an item is missing, raise warning
+        WARNING="$WARNING $ITEM"
+    fi
+done
+
+# Print the warnings out in the docker logs
+if [ -n "$WARNING" ]; then
+    echo "WARNING: The following expected files/directories are missing: $WARNING" >&2
+fi
+
+
+# Back up files and folders, only if there are files to back up
+if [ -n "$FILES_TO_BACKUP" ]; then
+    echo "Backing up: $FILES_TO_BACKUP"
+    tar -Jcf "$BACKUP_LOCATION" $FILES_TO_BACKUP
+    OUTPUT="New backup created"
+else
+    OUTPUT="No files to back up"
+fi
+
 
 
 # ------------------ [ DELETE ] ------------------
