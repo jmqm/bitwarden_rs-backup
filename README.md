@@ -43,6 +43,12 @@ services:
 
 `/backups` _(write)_ - Where to store backups to.
 
+User specified in compose environment (`UID`/`GID`) vars must have write access to `/backups`
+If you want to make them the owner of the backups directory do: 
+```
+chown ${UID}:${GID} /path/to/backups
+```
+
 ## Environment Variables
 #### ⭐Required, 👍 Recommended
 | Environment Variable | Info                                                                                                                                  |
