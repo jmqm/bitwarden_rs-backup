@@ -33,13 +33,13 @@ done
 
 # Print the warnings out in the docker logs
 if [ -n "$WARNING" ]; then
-    echo "WARNING: The following expected files/directories are missing: $WARNING" >&2
+    echo "[WARNING] The following expected files/directories are missing:$WARNING" >&2
 fi
 
 
 # Back up files and folders, only if there are files to back up
 if [ -n "$FILES_TO_BACKUP" ]; then
-    echo "Backing up: $FILES_TO_BACKUP"
+    echo "[INFO] Backing up:$FILES_TO_BACKUP"
     tar -Jcf "$BACKUP_LOCATION" $FILES_TO_BACKUP
     OUTPUT="New backup created"
 else
