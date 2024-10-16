@@ -26,6 +26,7 @@ services:
     image: jmqm/vaultwarden_backup:latest
     container_name: vaultwarden_backup
     network_mode: none
+    restart: always
     volumes:
       - /vaultwarden_data_directory:/data:ro # Read-only
       - /backup_directory:/backups
