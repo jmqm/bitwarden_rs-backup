@@ -34,7 +34,7 @@ services:
       - /etc/localtime:/etc/localtime:ro # Container uses date from host.
     environment:
       - DELETE_AFTER=30
-      - CRON_TIME=* */24 * * * # Runs at 12:00 AM.
+      - CRON_TIME=0 0 * * * # Runs at 12:00 AM.
       - UID=1024
       - GID=100
 ```
